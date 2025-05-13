@@ -1,0 +1,10 @@
+{
+  "name": "dvh-store",
+  "version": "1.0.0",
+  "description": "DVH store",
+  "type": "module",
+  "scripts": {
+    "dev:start": "cd ./dev-config && docker compose up"
+  },
+  "dependencies": {}
+}

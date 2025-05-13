@@ -1,0 +1,7 @@
+node_modules
+.strapi
+dist
+.strapi-updater.json
+next-env.d.ts
+build
+.next
