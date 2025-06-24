@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "categories_content",
+  "info": {
+    "singularName": "category-content",
+    "pluralName": "categories-content",
+    "displayName": "Категории"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "pages.page-meta",
+      "required": true
+    }
+  }
+}

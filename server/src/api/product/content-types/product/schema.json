@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Продукты",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "article": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "is_popular": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_recommended": {
+      "type": "boolean",
+      "default": false
+    },
+    "in_stock": {
+      "type": "boolean",
+      "default": true
+    },
+    "equipments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::equipment.equipment",
+      "inversedBy": "products"
+    }
+  }
+}

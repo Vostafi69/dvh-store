@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_pages_page_metas",
+  "info": {
+    "displayName": "meta",
+    "icon": "earth",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

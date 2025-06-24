@@ -4,7 +4,7 @@
   "description": "DVH store",
   "type": "module",
   "scripts": {
-    "dev:start": "cd ./dev-config && docker compose up"
+    "dev:start": "cd ./dev-config && docker compose up -d"
   },
   "dependencies": {}
 }

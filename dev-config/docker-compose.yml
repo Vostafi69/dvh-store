@@ -46,26 +46,29 @@ services:
       ENCRYPTION_KEY: ${ENCRYPTION_KEY}
       SERVER_HOST: ${SERVER_HOST}
       SERVER_PORT: ${SERVER_PORT}
+      JWT_SECRET: ${JWT_SECRET}
     networks:
       - store-network
 
-  client:
-    build:
-      context: ../client
-      dockerfile: ../dev-config/Dockerfile.client
-    container_name: dvh-store-client
-    depends_on:
-      - database
-      - server
-    ports:
-      - "${CLIENT_PORT}:3000"
-    volumes:
-      - ../client:/usr/app
-      - /usr/app/node_modules
-    environment:
-      CLIENT_PORT: ${CLIENT_PORT}
-    networks:
-      - store-network
+  # client:
+  #   build:
+  #     context: ../client
+  #     dockerfile: ../dev-config/Dockerfile.client
+  #   container_name: dvh-store-client
+  #   depends_on:
+  #     - database
+  #     - server
+  #   ports:
+  #     - "${CLIENT_PORT}:3000"
+  #   volumes:
+  #     - ../client:/usr/app
+  #     - /usr/app/node_modules
+  #   environment:
+  #     CLIENT_PORT: ${CLIENT_PORT}
+  #     BASE_BACKEND_URL: ${BASE_BACKEND_URL}
+  #     REVALIDATE_TIME: ${REVALIDATE_TIME}
+  #   networks:
+  #     - store-network
 
 networks:
   store-network:
