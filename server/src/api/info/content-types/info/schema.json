@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "infos",
+  "info": {
+    "singularName": "info",
+    "pluralName": "infos",
+    "displayName": "Общая информация",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "phones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "share.telefon"
+    },
+    "emails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "share.pochta"
+    },
+    "cities": {
+      "type": "component",
+      "repeatable": true,
+      "component": "share.gorod"
+    }
+  }
+}

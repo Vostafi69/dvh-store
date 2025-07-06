@@ -12,7 +12,7 @@ export default factories.createCoreController(
     async createOrUpdate(ctx) {
       try {
         const { userId, productIds } = ctx.request.body;
-        console.log(userId, productIds);
+
         if (!userId || !productIds || !Array.isArray(productIds)) {
           return ctx.badRequest(
             "Необходимо указать userId и массив productIds"

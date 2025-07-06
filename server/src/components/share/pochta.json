@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_share_pochta",
+  "info": {
+    "displayName": "Почта",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "unique": true
+    }
+  }
+}

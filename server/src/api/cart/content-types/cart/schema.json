@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cart",
     "pluralName": "carts",
-    "displayName": "Корзины"
+    "displayName": "Корзины",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,10 +17,10 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "cart"
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product"
+    "order": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.produkt-zakaza"
     }
   }
 }

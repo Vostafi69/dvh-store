@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_orders_produkt_zakaza",
+  "info": {
+    "displayName": "Продукт заказа",
+    "icon": "shoppingCart"
+  },
+  "options": {},
+  "attributes": {
+    "count": {
+      "type": "integer"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  }
+}

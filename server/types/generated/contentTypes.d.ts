@@ -438,6 +438,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
 export interface ApiCartCart extends Struct.CollectionTypeSchema {
   collectionName: 'carts';
   info: {
+    description: '';
     displayName: '\u041A\u043E\u0440\u0437\u0438\u043D\u044B';
     pluralName: 'carts';
     singularName: 'cart';
@@ -452,7 +453,7 @@ export interface ApiCartCart extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::cart.cart'> &
       Schema.Attribute.Private;
-    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    order: Schema.Attribute.Component<'orders.produkt-zakaza', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -468,6 +469,7 @@ export interface ApiCategoryContentCategoryContent
   extends Struct.SingleTypeSchema {
   collectionName: 'categories_content';
   info: {
+    description: '';
     displayName: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438';
     pluralName: 'categories-content';
     singularName: 'category-content';
@@ -486,8 +488,7 @@ export interface ApiCategoryContentCategoryContent
       'api::category-content.category-content'
     > &
       Schema.Attribute.Private;
-    metadata: Schema.Attribute.Component<'pages.page-meta', false> &
-      Schema.Attribute.Required;
+    metadata: Schema.Attribute.Component<'pages.page-meta', false>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -519,6 +520,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::category.category'
     > &
       Schema.Attribute.Private;
+    metadata: Schema.Attribute.Component<'pages.page-meta', false>;
     name: Schema.Attribute.String;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
@@ -564,6 +566,66 @@ export interface ApiEquipmentEquipment extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiInfoInfo extends Struct.SingleTypeSchema {
+  collectionName: 'infos';
+  info: {
+    description: '';
+    displayName: '\u041E\u0431\u0449\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F';
+    pluralName: 'infos';
+    singularName: 'info';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cities: Schema.Attribute.Component<'share.gorod', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    emails: Schema.Attribute.Component<'share.pochta', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::info.info'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    phones: Schema.Attribute.Component<'share.telefon', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPrderPrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
+  info: {
+    description: '';
+    displayName: '\u0417\u0430\u043A\u0430\u0437\u044B';
+    pluralName: 'orders';
+    singularName: 'prder';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    company: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::prder.prder'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Component<'orders.produkt-zakaza', true>;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -592,6 +654,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     is_popular: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     is_recommended: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
+    keywords: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -599,6 +662,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1123,6 +1187,8 @@ declare module '@strapi/strapi' {
       'api::category-content.category-content': ApiCategoryContentCategoryContent;
       'api::category.category': ApiCategoryCategory;
       'api::equipment.equipment': ApiEquipmentEquipment;
+      'api::info.info': ApiInfoInfo;
+      'api::prder.prder': ApiPrderPrder;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

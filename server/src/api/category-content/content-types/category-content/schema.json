@@ -4,7 +4,8 @@
   "info": {
     "singularName": "category-content",
     "pluralName": "categories-content",
-    "displayName": "Категории"
+    "displayName": "Категории",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,8 +22,7 @@
     "metadata": {
       "type": "component",
       "repeatable": false,
-      "component": "pages.page-meta",
-      "required": true
+      "component": "pages.page-meta"
     }
   }
 }

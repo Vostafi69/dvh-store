@@ -60,6 +60,12 @@
       "relation": "manyToMany",
       "target": "api::equipment.equipment",
       "inversedBy": "products"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "keywords": {
+      "type": "text"
     }
   }
 }

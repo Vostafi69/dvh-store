@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_share_gorod",
+  "info": {
+    "displayName": "Город",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
